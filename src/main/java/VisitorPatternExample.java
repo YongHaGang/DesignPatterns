@@ -8,17 +8,17 @@ public class VisitorPatternExample {
         lion.fly();
         eagle.fly();
 
-        lion.visit(new Swim());
-        eagle.visit(new Swim());
-        lion.visit(new Attack());
-        eagle.visit(new Attack());
+        lion.accept(new Swim());
+        eagle.accept(new Swim());
+        lion.accept(new Attack());
+        eagle.accept(new Attack());
     }
 }
 
 interface Animal {
     void fly();
     void move();
-    void visit(Visitor visitor);
+    void accept(Visitor visitor);
 }
 
 class Lion implements Animal {
@@ -34,7 +34,7 @@ class Lion implements Animal {
     }
 
     @Override
-    public void visit(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 }
@@ -52,7 +52,7 @@ class Eagle implements Animal {
     }
 
     @Override
-    public void visit(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 }
